@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Деталі товару - PriceDrop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-page">
+
+<header>
+    <a href="index.html" class="logo-container">
+        <div class="css-lightning"></div>
+        <div>
+            <div class="logo-text">PriceDrop</div>
+            <span class="logo-sub">Світло завжди з тобою</span>
+        </div>
+    </a>
+    <nav id="mobile-menu">
+        <a href="index.html">Головна</a>
+        <a href="products.html" class="active">Товари</a>
+        <a href="index.html#order">Доставка</a>
+    </nav>
+    <div class="header-actions">
+        <button class="btn-outline cart-btn" onclick="openCart()">Кошик <span class="cart-count">0</span></button>
+        <a href="index.html#order" class="btn-yellow">Замовити</a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+</header>
+
+<div class="detail-page-container">
+    <div class="breadcrumbs-bar">
+        <a href="index.html">Головна</a> &gt; <a href="products.html">Товари</a> &gt; <span id="dt-bread-title">LED лампочка з акумулятором</span>
+    </div>
+
+    <div class="product-detail-grid">
+        <!-- Ліва колонка: Мініатюри та Головне фото -->
+        <div class="detail-left-gallery">
+            <div class="detail-thumbs-vertical" id="dt-thumbs-box">
+                <!-- Динамічні фотографії -->
+            </div>
+            <div class="detail-main-img-wrap">
+                <span class="detail-top-badge" id="dt-badge">Хіт продажу</span>
+                <img id="dt-main-img" src="prod1.jpg" alt="Товар">
+                <button class="expand-btn" title="Повний розмір">⛶</button>
+            </div>
+        </div>
+
+        <!-- Центральна колонка: Опис, іконки характеристик, ціна, кнопка -->
+        <div class="detail-center-info">
+            <h1 id="dt-title">LED лампочка з акумулятором</h1>
+            <div class="detail-rating-row">
+                <span class="stars-gold">★★★★★</span>
+                <strong id="dt-rating-score">4.9</strong>
+                <span class="reviews-count">(124 відгуки)</span>
+            </div>
+            <p class="detail-description-text" id="dt-desc">
+                Потужна LED лампочка з вбудованим акумулятором. Ідеальне рішення для дому, дачі, кемпінгу та аварійних ситуацій. Забезпечує яскраве та рівномірне освітлення навіть без електрики.
+            </p>
+
+            <div class="detail-specs-grid">
+                <div class="spec-card">
+                    <span class="spec-icon">💡</span>
+                    <div>
+                        <small>Яскравість</small>
+                        <strong id="dt-lumens">800 люмен</strong>
+                    </div>
+                </div>
+                <div class="spec-card">
+                    <span class="spec-icon">🔋</span>
+                    <div>
+                        <small>Автономність</small>
+                        <strong id="dt-battery">До 8 годин</strong>
+                    </div>
+                </div>
+                <div class="spec-card">
+                    <span class="spec-icon">🔌</span>
+                    <div>
+                        <small>Зарядка</small>
+                        <strong id="dt-charge">USB Type-C</strong>
+                    </div>
+                </div>
+                <div class="spec-card">
+                    <span class="spec-icon">⚙️</span>
+                    <div>
+                        <small>Режими</small>
+                        <strong id="dt-modes">3 режими</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="package-box">
+                <h4>Комплектація:</h4>
+                <ul id="dt-package-list">
+                    <li>• LED лампочка</li>
+                    <li>• USB кабель</li>
+                    <li>• Кріплення (гачок)</li>
+                    <li>• Інструкція</li>
+                </ul>
+            </div>
+
+            <div class="detail-price-row">
+                <span class="current-price" id="dt-price">299 грн</span>
+                <span class="old-price" id="dt-old-price">399 грн</span>
+                <span class="discount-pill" id="dt-discount">Економія 100 грн</span>
+            </div>
+
+            <div class="detail-action-row">
+                <div class="qty-control-box">
+                    <button onclick="changeQty(-1)">-</button>
+                    <span id="dt-qty">1</span>
+                    <button onclick="changeQty(1)">+</button>
+                </div>
+                <button class="add-to-cart-large-btn" onclick="addCurrentToCart()">🛒 Додати в кошик</button>
+            </div>
+        </div>
+
+        <!-- Права колонка: Блок доставки та оформлення -->
+        <div class="detail-right-sidebar">
+            <div class="order-side-card">
+                <div class="side-feature-item">
+                    <span class="side-icon">🚚</span>
+                    <div>
+                        <strong>Доставка по Україні</strong>
+                        <p>1-3 дні, Нова Пошта / Укрпошта</p>
+                    </div>
+                </div>
+                <div class="side-feature-item">
+                    <span class="side-icon">💳</span>
+                    <div>
+                        <strong>Оплата при отриманні</strong>
+                        <p>Без передоплати</p>
+                    </div>
+                </div>
+                <div class="side-feature-item">
+                    <span class="side-icon">🛡️</span>
+                    <div>
+                        <strong>Гарантія 14 днів</strong>
+                        <p>Можливість повернення</p>
+                    </div>
+                </div>
+
+                <div class="side-order-form">
+                    <label>Кількість товару</label>
+                    <div class="side-qty-selector">
+                        <button onclick="changeQty(-1)">-</button>
+                        <span>🛒 <strong id="side-qty-num">1</strong></span>
+                        <button onclick="changeQty(1)">+</button>
+                    </div>
+                    <button class="side-buy-now-btn" onclick="addCurrentToCart()">Замовити зараз</button>
+                    <div class="secure-info">🔒 Ваші дані в безпеці</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Нижній блок переваг (4 іконки) -->
+<section class="bottom-features-bar">
+    <div class="bottom-features-grid">
+        <div class="bf-card">
+            <span class="bf-icon">⚡</span>
+            <div>
+                <h4>Надійне світло у будь-якій ситуації</h4>
+                <p>Ця лампочка стане вашим незамінним помічником під час відключень світла.</p>
+            </div>
+        </div>
+        <div class="bf-card">
+            <span class="bf-icon">⏱️</span>
+            <div>
+                <h4>До 8 годин роботи</h4>
+                <p>Залежно від режиму</p>
+            </div>
+        </div>
+        <div class="bf-card">
+            <span class="bf-icon">🛡️</span>
+            <div>
+                <h4>Легкий та компактний</h4>
+                <p>Зручно брати з собою</p>
+            </div>
+        </div>
+        <div class="bf-card">
+            <span class="bf-icon">🔌</span>
+            <div>
+                <h4>Зарядка від USB</h4>
+                <p>Type-C кабель у комплекті</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Кошик -->
+<div class="modal-overlay" id="cart-modal">
+    <div class="modal-content">
+        <button class="close-modal" onclick="closeCart()">×</button>
+        <h2>Кошик</h2>
+        <div class="cart-items" id="cart-items-container"></div>
+        <div id="cart-total" style="font-size: 20px; font-weight: bold; text-align: right; margin-bottom: 15px; color: #1a1a1a;">Сума: 0 грн</div>
+        <form id="cart-order-form">
+            <input type="text" id="c-name" class="form-input" placeholder="Ваше ім'я" required>
+            <input type="tel" id="c-phone" class="form-input" placeholder="Номер телефону" required>
+            <input type="text" id="c-city" class="form-input" placeholder="Місто та відділення" required>
+            <button type="button" class="btn-black" style="width: 100%; padding: 15px; font-size: 16px; text-transform: uppercase;">Оформити замовлення →</button>
+        </form>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

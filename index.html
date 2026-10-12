@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Drop - Світло завжди з тобою</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="logo-container">
+        <div class="css-lightning"></div>
+        <div>
+            <div class="logo-text">Price Drop</div>
+            <span class="logo-sub">Світло завжди з тобою</span>
+        </div>
+    </a>
+    <nav id="mobile-menu">
+        <a href="index.html" class="active">Головна</a>
+        <a href="products.html">Товари</a>
+        <a href="#order">Доставка</a>
+    </nav>
+    <div class="header-actions">
+        <button class="btn-outline cart-btn" onclick="openCart()">Кошик <span class="cart-count">0</span></button>
+        <a href="#order" class="btn-yellow desktop-only-btn">Замовити</a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+</header>
+
+<main class="hero-bg-banner" style="background-image: url('banner.jpg');">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="hero-badge">⚡ Актуально в умовах відключень світла</div>
+        <h1>Світло, яке завжди<br><span>з тобою</span></h1>
+        <p>Портативні лампочки, ліхтарики та світильники з USB, які допоможуть пережити відключення світла з комфортом.</p>
+        
+        <div class="features-row">
+            <div class="hero-feature"><div class="css-icon-battery"></div> Вбудований powerbank</div>
+            <div class="hero-feature"><div class="css-icon-bulb"></div> Яскраве світло</div>
+            <div class="hero-feature"><div class="css-icon-shield"></div> Надійні та довговічні</div>
+        </div>
+        <a href="#order" class="hero-btn-order">Замовити зараз →</a>
+        <div class="hero-subtext">Доставка по всій Україні • Оплата при отриманні</div>
+    </div>
+</main>
+
+<section class="section-light">
+    <h2 class="section-title text-center">Популярні товари</h2>
+    <div class="popular-desktop-grid" id="popular-desktop-container"></div>
+    <div class="slider-container mobile-slider-only">
+        <button class="slider-arrow prev" onclick="moveSlide(-1)">&#10094;</button>
+        <div class="slider-viewport">
+            <div class="slider-track" id="popular-products"></div>
+        </div>
+        <button class="slider-arrow next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+</section>
+
+<section class="section-dark">
+    <h2 class="section-title text-center">Чому обирають <span>нас?</span></h2>
+    <div class="why-us-grid">
+        <div class="why-item">
+            <div class="css-icon-truck"></div>
+            <h4>Швидка доставка</h4>
+            <p>1-3 дні по всій Україні</p>
+        </div>
+        <div class="why-item">
+            <div class="css-icon-shield-lg"></div>
+            <h4>Гарантія якості</h4>
+            <p>Перевіряємо кожен товар</p>
+        </div>
+        <div class="why-item">
+            <div class="css-icon-card"></div>
+            <h4>Оплата при отриманні</h4>
+            <p>Без ризиків</p>
+        </div>
+        <div class="why-item">
+            <div class="css-icon-support"></div>
+            <h4>Підтримка 24/7</h4>
+            <p>Відповімо на всі питання</p>
+        </div>
+        <div class="why-item">
+            <div class="css-icon-map"></div>
+            <h4>Працюємо по всій Україні</h4>
+            <p>Навіть у найвіддаленіші міста</p>
+        </div>
+    </div>
+</section>
+
+<section class="section-light">
+    <h2 class="section-title text-center">Знадобиться у будь-якій ситуації</h2>
+    <div class="situations-grid">
+        <div class="sit-card">
+            <img src="center1.jpg" alt="Вдома" onerror="this.src='https://via.placeholder.com/300x150/eee/999?text=Вдома'">
+            <div class="sit-card-content text-center">
+                <h4>Вдома</h4>
+                <p>При відключенні світла</p>
+            </div>
+        </div>
+        <div class="sit-card">
+            <img src="center2.jpg" alt="На природі" onerror="this.src='https://via.placeholder.com/300x150/eee/999?text=На+природі'">
+            <div class="sit-card-content text-center">
+                <h4>На природі</h4>
+                <p>Кемпінг, риболовля, відпочинок</p>
+            </div>
+        </div>
+        <div class="sit-card">
+            <img src="center3.jpg" alt="У дорозі" onerror="this.src='https://via.placeholder.com/300x150/eee/999?text=У+дорозі'">
+            <div class="sit-card-content text-center">
+                <h4>У дорозі</h4>
+                <p>Надійне освітлення в авто</p>
+            </div>
+        </div>
+        <div class="sit-card">
+            <img src="center4.jpg" alt="Зарядка" onerror="this.src='https://via.placeholder.com/300x150/eee/999?text=Зарядка'">
+            <div class="sit-card-content text-center">
+                <h4>Зарядка телефону</h4>
+                <p>Коли немає світла</p>
+            </div>
+        </div>
+        <div class="sit-yellow-card text-center" onclick="location.href='products.html'">
+            <h3>Будь готовий до будь-яких ситуацій!!</h3>
+            <span class="sit-yellow-sub">Світло, яке не підведе →</span>
+        </div>
+    </div>
+</section>
+
+<section class="section-dark" id="order">
+    <div class="hit-section">
+        <div class="hit-info">
+            <div class="hit-badge">ХІТ ПРОДАЖІВ</div>
+            <h2 class="hit-title">LED Лампа з Двома<br>акумуляторами</h2>
+            <p class="hit-desc">Потужне світло + працює без електроенергії. Ідеальний варіант під час вимикань світла .</p>
+            <ul>
+                <li><div class="css-check"></div> До 5 годин роботи</li>
+                <li><div class="css-check"></div> 2 акумулятори</li>
+                <li><div class="css-check"></div> Працює без електроенергії</li>
+                <li><div class="css-check"></div> Зручний гачок для підвішування</li>
+            </ul>
+            <div class="hit-price">
+                199 грн <span>399 грн</span>
+            </div>
+        </div>
+        
+        <div class="hit-form-box">
+            <h3>Оформити замовлення</h3>
+            <form id="quick-order-form" onsubmit="submitQuickOrder(event)">
+                <input type="text" id="q-name" class="form-input" placeholder="Ваше ім'я" required>
+                <input type="tel" id="q-phone" class="form-input" placeholder="Номер телефону" required>
+                <input type="text" id="q-city" class="form-input" placeholder="Місто" required>
+                <input type="text" id="q-warehouse" class="form-input" placeholder="Відділення або поштомат" required>
+                <button type="submit" class="hit-btn-submit">Замовити зараз →</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<footer id="footer">
+    <div class="footer-content">
+        <a href="index.html" class="logo-container">
+            <div class="css-lightning"></div>
+            <div>
+                <div class="logo-text">Price Drop</div>
+                <span class="logo-sub">Світло завжди з тобою</span>
+            </div>
+        </a>
+        <div class="footer-links">
+            <a href="index.html">Головна</a>
+            <a href="products.html">Товари</a>
+            <a href="#order">Доставка</a>
+            <a href="#footer">Контакти</a>
+        </div>
+    </div>
+    <div class="footer-copy">© 2026 Price Drop. Всі права захищені.</div>
+</footer>
+
+<div class="modal-overlay" id="cart-modal">
+    <div class="modal-content">
+        <button class="close-modal" onclick="closeCart()">×</button>
+        <h2>Кошик</h2>
+        <div class="cart-items" id="cart-items-container"></div>
+        <div id="cart-total" style="font-size: 20px; font-weight: bold; text-align: right; margin-bottom: 15px;">Сума: 0 грн</div>
+        <form id="cart-order-form" onsubmit="submitCartOrder(event)">
+            <input type="text" id="c-name" class="form-input" placeholder="Ваше ім'я" required>
+            <input type="tel" id="c-phone" class="form-input" placeholder="Номер телефону" required>
+            <input type="text" id="c-city" class="form-input" placeholder="Місто" required>
+            <input type="text" id="c-warehouse" class="form-input" placeholder="Виберіть відділення або поштомат" required>
+            <button type="submit" class="hit-btn-submit">Оформити замовлення →</button>
+        </form>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

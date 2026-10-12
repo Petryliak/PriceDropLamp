@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Всі товари - Price Drop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="logo-container">
+        <div class="css-lightning"></div>
+        <div>
+            <div class="logo-text">Price Drop</div>
+            <span class="logo-sub">Світло завжди з тобою</span>
+        </div>
+    </a>
+    <nav id="mobile-menu">
+        <a href="index.html">Головна</a>
+        <a href="products.html" class="active">Товари</a>
+        <a href="index.html#order">Доставка</a>
+    </nav>
+    <div class="header-actions">
+        <button class="btn-outline cart-btn" onclick="openCart()">Кошик <span class="cart-count" id="cart-counter">0</span></button>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+</header>
+
+<div class="hero-products-banner">
+    <div class="breadcrumbs"><a href="index.html">Головна</a> > Товари</div>
+    <h1>Наші <span>товари</span></h1>
+    <p>Надійне світло для будь-яких ситуацій</p>
+    <div class="banner-features">
+        <span>Гарантія якості: Перевіряємо кожен товар</span>
+        <span>Швидка доставка: 1-3 дні по всій Україні</span>
+        <span>Оплата при отриманні: Без ризиків</span>
+    </div>
+</div>
+
+<div class="page-layout">
+    <aside class="sidebar">
+        <div class="filter-group">
+            <h4>Ціна</h4>
+            <input type="range" min="0" max="3000" value="3000" id="price-range" oninput="applyFilters()">
+            <div style="display:flex; justify-content:space-between; font-size:12px; color:#888; margin-top:8px;">
+                <span>від 0 грн</span>
+                <span>до 3000 грн</span>
+            </div>
+        </div>
+        <div class="filter-group">
+            <h4>Тип живлення</h4>
+            <label class="filter-label"><input type="checkbox" value="battery" onchange="applyFilters()"> Акумулятор</label>
+            <label class="filter-label"><input type="checkbox" value="usb" onchange="applyFilters()"> USB</label>
+            <label class="filter-label"><input type="checkbox" value="cells" onchange="applyFilters()"> Батарейки</label>
+            <label class="filter-label"><input type="checkbox" value="solar" onchange="applyFilters()"> Сонячна енергія</label>
+        </div>
+    </aside>
+
+    <main class="content-area">
+        <div class="products-grid" id="all-products"></div>
+    </main>
+</div>
+
+<section class="section-dark" id="product-detail-section" style="border-top: 1px solid #222; margin-top: 40px; padding: 50px 5%;">
+    <div class="single-product-container-vertical">
+        <div class="sp-main-img-box">
+            <img id="sp-main-img" src="" alt="Main" onerror="this.src='https://via.placeholder.com/400x300'">
+        </div>
+        <div class="sp-thumbs-row" id="sp-thumbs"></div>
+        
+        <div class="sp-info-box">
+            <div class="product-badge" id="sp-badge" style="display:none;"></div>
+            <h2 id="sp-title" style="font-size: 28px; margin-bottom: 10px;">Назва товару</h2>
+            <div style="color: #ffcc00; font-size: 14px; margin-bottom: 15px; cursor: pointer;" onclick="openReviewsModal()">★★★★★ <span style="color:#888; text-decoration: underline;" id="sp-reviews-count">124 відгуки</span></div>
+            <p id="sp-desc" style="color: #aaa; font-size: 14px; margin-bottom: 20px;"></p>
+            <div class="sp-price-row" style="display:flex; align-items:center; gap:15px; margin-bottom: 20px;">
+                <span id="sp-price" style="font-size: 26px; font-weight: 900; color: #ffcc00;">0 грн</span>
+                <span id="sp-old-price" style="font-size: 16px; color: #777; text-decoration: line-through;">0 грн</span>
+            </div>
+            <div style="display: flex; gap: 15px; align-items: center;">
+                <div class="cart-qty-ctrl" style="background:#222; padding: 5px 10px; border-radius:8px;">
+                    <button class="cart-qty-btn" id="sp-qty-minus">-</button>
+                    <span id="sp-qty" style="padding: 0 10px; font-weight:700;">1</span>
+                    <button class="cart-qty-btn" id="sp-qty-plus">+</button>
+                </div>
+                <button class="btn-detail-add" id="sp-add-btn">Додати в кошик</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Модальне вікно для відгуків -->
+<div class="modal-overlay" id="reviews-modal">
+    <div class="modal-content reviews-modal-content">
+        <button class="close-modal" onclick="closeReviewsModal()">×</button>
+        <h2 style="color: #1a1a1a; margin-bottom: 15px;">Відгуки покупців (124)</h2>
+        <div class="reviews-list" id="reviews-list-container"></div>
+    </div>
+</div>
+
+<footer id="footer">
+    <div class="footer-content">
+        <a href="index.html" class="logo-container">
+            <div class="css-lightning"></div>
+            <div>
+                <div class="logo-text">Price Drop</div>
+                <span class="logo-sub">Світло завжди з тобою</span>
+            </div>
+        </a>
+        <div class="footer-links">
+            <a href="index.html">Головна</a>
+            <a href="products.html">Товари</a>
+            <a href="index.html#order">Доставка</a>
+            <a href="#footer">Контакти</a>
+        </div>
+    </div>
+    <div class="footer-copy">© 2026 Price Drop. Всі права захищені.</div>
+</footer>
+
+<div class="modal-overlay" id="cart-modal">
+    <div class="modal-content">
+        <button class="close-modal" onclick="closeCart()">×</button>
+        <h2>Кошик</h2>
+        <div class="cart-items" id="cart-items-container"></div>
+        <div id="cart-total" style="font-size: 20px; font-weight: bold; text-align: right; margin-bottom: 15px;">Сума: 0 грн</div>
+        <form id="cart-order-form" onsubmit="submitCartOrder(event)">
+            <input type="text" id="c-name" class="form-input" placeholder="Ваше ім'я" required>
+            <input type="tel" id="c-phone" class="form-input" placeholder="Номер телефону" required>
+            <input type="text" id="c-city" class="form-input" placeholder="Місто" required>
+            <input type="text" id="c-warehouse" class="form-input" placeholder="Виберіть відділення або поштомат" required>
+            <button type="submit" class="hit-btn-submit">Оформити замовлення →</button>
+        </form>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+    renderProducts('all-products');
+    const urlParams = new URLSearchParams(window.location.search);
+    const idParam = urlParams.get('id');
+    if (idParam) {
+        renderSingleProduct(parseInt(idParam));
+    } else {
+        renderSingleProduct(1);
+    }
+    renderReviews();
+</script>
+</body>
+</html>

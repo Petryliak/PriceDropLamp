@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Всі товари - PriceDrop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="logo-container">
+        <div class="css-lightning"></div>
+        <div>
+            <div class="logo-text">PriceDrop</div>
+            <span class="logo-sub">Світло завжди з тобою</span>
+        </div>
+    </a>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <nav id="mobile-menu">
+        <a href="index.html">Головна</a>
+        <a href="products.html" class="active">Товари</a>
+        <a href="index.html#order">Доставка</a>
+    </nav>
+    <div class="header-actions">
+        <button class="btn-outline cart-btn" onclick="openCart()">Кошик <span class="cart-count" id="cart-counter">0</span></button>
+    </div>
+</header>
+
+<div class="hero" style="padding: 50px; background-image: none;">
+    <div style="font-size: 14px; color: #ccc; margin-bottom: 20px;">Головна > Товари</div>
+    <h1 style="font-size: 40px;">Наші <span>товари</span></h1>
+    <p>Надійне світло для будь-яких ситуацій</p>
+</div>
+
+<div class="page-layout">
+    <aside class="sidebar">
+        <div class="filter-group">
+            <h4>Тип живлення</h4>
+            <label class="filter-label"><input type="checkbox" value="battery" onchange="applyFilters()"> Акумулятор</label>
+            <label class="filter-label"><input type="checkbox" value="usb" onchange="applyFilters()"> USB</label>
+            <label class="filter-label"><input type="checkbox" value="cells" onchange="applyFilters()"> Батарейки</label>
+            <label class="filter-label"><input type="checkbox" value="solar" onchange="applyFilters()"> Сонячна енергія</label>
+        </div>
+    </aside>
+
+    <main class="content-area">
+        <div class="products-grid" id="all-products"></div>
+    </main>
+</div>
+
+<div class="modal-overlay" id="cart-modal">
+    <div class="modal-content">
+        <button class="close-modal" onclick="closeCart()">×</button>
+        <h2>Кошик</h2>
+        <div class="cart-items" id="cart-items-container"></div>
+        <div style="font-size: 20px; font-weight: bold; text-align: right; margin-bottom: 15px;" id="cart-total">Сума: 0 грн</div>
+        <form id="cart-order-form">
+            <input type="text" id="c-name" class="form-input" placeholder="Ваше ім'я" required>
+            <input type="tel" id="c-phone" class="form-input" placeholder="Номер телефону" required>
+            <input type="text" id="c-city" class="form-input" placeholder="Місто та відділення" required>
+            <button type="submit" class="btn-yellow" style="width: 100%; padding: 15px;">Оформити замовлення →</button>
+        </form>
+    </div>
+</div>
+
+<div class="modal-overlay" id="product-detail-modal">
+    <div class="modal-content detail-modal">
+        <button class="close-modal" onclick="closeProductDetail()">×</button>
+        <div class="detail-images">
+            <div class="thumbnails">
+                <img id="detail-thumb-1" src="" alt="thumb" onclick="changeMainImage(this.src)">
+                <img id="detail-thumb-2" src="" alt="thumb" onclick="changeMainImage(this.src)">
+                <img id="detail-thumb-3" src="" alt="thumb" onclick="changeMainImage(this.src)">
+            </div>
+            <div class="main-image">
+                <img id="detail-main-img" src="" alt="Main">
+            </div>
+        </div>
+        <div class="detail-info">
+            <div class="product-badge" id="detail-badge" style="display:none;"></div>
+            <h2 id="detail-title">Назва</h2>
+            <p id="detail-desc">Опис товару</p>
+            <div class="specs">
+                <h4>Комплектація:</h4>
+                <ul id="detail-specs"></ul>
+            </div>
+            <div class="detail-price" id="detail-price">0 грн</div>
+            <button class="btn-yellow" id="detail-add-btn" style="width:100%; padding: 15px; font-size: 18px;">🛒 Додати в кошик</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+    renderProducts('all-products');
+</script>
+</body>
+</html>
