@@ -53,31 +53,29 @@ async function sendToTelegram(orderDetails) {
     orderDetails.items.forEach(i => message += `- ${i.name} (${i.qty} шт.) — ${i.price * i.qty} грн\n`);
     message += `\n💰 <b>Сума:</b> ${orderDetails.total} грн`;
 
+    // 1. Одразу фіксуємо покупку у Meta Pixel
+    if (typeof fbq === 'function') {
+        fbq('track', 'Purchase', {
+            value: orderDetails.total,
+            currency: 'UAH'
+        });
+    }
+
+    // 2. Сповіщаємо користувача та очищуємо кошик
+    alert('Замовлення успішно відправлено!');
+    cart = [];
+    updateCart();
+    closeCart();
+
+    // 3. Надсилаємо в Telegram фоном
     try {
-        let response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+        await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: message, parse_mode: 'HTML' })
         });
-        
-        if (response.ok) {
-            // Відстеження покупки у Meta Pixel
-            if (typeof fbq === 'function') {
-                fbq('track', 'Purchase', {
-                    value: orderDetails.total,
-                    currency: 'UAH'
-                });
-            }
-
-            alert('Замовлення успішно відправлено в Telegram!');
-            cart = [];
-            updateCart();
-            closeCart();
-        } else {
-            alert('Помилка відправки в Telegram.');
-        }
     } catch (e) {
-        alert('Помилка мережі.');
+        console.log('Помилка надсилання в Telegram');
     }
 }
 
