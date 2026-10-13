@@ -61,6 +61,14 @@ async function sendToTelegram(orderDetails) {
         });
         
         if (response.ok) {
+            // Відстеження покупки у Meta Pixel
+            if (typeof fbq === 'function') {
+                fbq('track', 'Purchase', {
+                    value: orderDetails.total,
+                    currency: 'UAH'
+                });
+            }
+
             alert('Замовлення успішно відправлено в Telegram!');
             cart = [];
             updateCart();
@@ -256,6 +264,16 @@ function addToCart(id, qty = 1) {
         const existing = cart.find(x => x.id === id);
         if (existing) existing.qty += qty;
         else cart.push({...p, qty: qty});
+        
+        // Відстеження додавання в кошик у Meta Pixel
+        if (typeof fbq === 'function') {
+            fbq('track', 'AddToCart', {
+                content_name: p.name,
+                value: p.price * qty,
+                currency: 'UAH'
+            });
+        }
+
         updateCart();
         openCart();
     }
